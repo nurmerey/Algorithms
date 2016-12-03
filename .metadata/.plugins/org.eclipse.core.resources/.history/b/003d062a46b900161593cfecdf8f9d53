@@ -1,0 +1,63 @@
+import edu.princeton.cs.algs4.StdRandom;
+import edu.princeton.cs.algs4.StdStats;
+import edu.princeton.cs.algs4.WeightedQuickUnionUF;
+import edu.princeton.cs.algs4.MinPQ;
+import edu.princeton.cs.algs4.StdIn;
+
+public class Percolation {
+private int n;
+private WeightedQuickUnionUF wquf;
+private int[] openSites;
+	public static void main(String[] args) {
+		Percolation p = new Percolation(10);
+	    System.out.println("hello");
+	    p.rowColTo1D(2, 1);
+	}
+	
+//create n-by-n grid, with all sites blocked
+   public Percolation(int n) {  
+	   if(n <= 0) throw new IllegalArgumentException("n is less than 0!");
+	   this.n = n;
+	   this.wquf = new WeightedQuickUnionUF(this.n*this.n);
+	   this.openSites = new int[this.n*this.n];
+	 
+   }
+// open site (row, col) if it is not open already
+   public void open(int row, int col){
+	   this.validIndex(row);
+	   this.validIndex(col);
+       
+   }
+// is site (row, col) open?
+   public boolean isOpen(int row, int col) {
+	   this.validIndex(row);
+	   this.validIndex(col);
+       return true;
+   }
+// is site (row, col) full?
+   public boolean isFull(int row, int col)  {
+	   this.validIndex(row);
+	   this.validIndex(col);
+       return true;
+   }
+// does the system percolate?
+   public boolean percolates() {
+       return false;
+   }
+   
+   private void validIndex(int index){
+	   if (index <= 0 || index > n) throw new IndexOutOfBoundsException("row index i out of bounds");
+   }
+   
+   private int rowColTo1D(int row, int col){
+	   //1. get this.n
+//	   int totalN = this.n*this.n;
+	   int id = this.n*row-(this.n-col);
+	   //2. get the position of row and col in this.n
+	   //3. create a number and return it
+	   System.out.println("rowColTo1D");
+	   System.out.print(id);
+	   return id;
+   }
+   
+}

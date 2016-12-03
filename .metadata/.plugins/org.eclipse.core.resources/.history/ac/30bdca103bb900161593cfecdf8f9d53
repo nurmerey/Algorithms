@@ -1,0 +1,38 @@
+import edu.princeton.cs.algs4.StdRandom;
+import edu.princeton.cs.algs4.StdStats;
+import edu.princeton.cs.algs4.WeightedQuickUnionUF;
+import edu.princeton.cs.algs4.MinPQ;
+import edu.princeton.cs.algs4.StdIn;
+
+public class Percolation {
+private int n;
+   public Percolation(int n) {  
+       
+   }
+   public void open(int row, int col){
+	   this.validIndex(row);
+	   this.validIndex(col);
+       
+   }
+   public boolean isOpen(int row, int col) {
+	   this.validIndex(row);
+	   this.validIndex(col);
+       return true;
+   }
+   public boolean isFull(int row, int col)  {
+	   this.validIndex(row);
+	   this.validIndex(col);
+       return true;
+   }
+   public boolean percolates() {
+       return false;
+   }
+
+   public static void main(String[] args) {
+       System.out.println("hello");
+   }
+   
+   private void validIndex(int index){
+	   if (index <= 0 || index > n) throw new IndexOutOfBoundsException("row index i out of bounds");
+   }
+}
