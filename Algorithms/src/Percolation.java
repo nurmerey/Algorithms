@@ -1,6 +1,5 @@
-import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
-import java.util.Arrays;
+import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
