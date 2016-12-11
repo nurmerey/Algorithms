@@ -23,7 +23,18 @@ public class Deque<Item> implements Iterable<Item> {
    
 // return the number of items on the deque
    public int size(){
-       return 0;
+       int size = 1;
+       if (isEmpty()) {
+           size = 0;
+       }else{
+           Node current = first;
+           while (current.next != null) {
+               System.out.println("iterating "+current.item);           
+               current = current.next;
+               size++;
+           }
+       }
+       return size;
    }
    
 // add the item to the front
@@ -49,6 +60,7 @@ public class Deque<Item> implements Iterable<Item> {
    
 // remove and return the item from the front
    public Item removeFirst(){
+       if (isEmpty()) throw new NoSuchElementException();
        Item item = first.item;
        first = first.next;
        if (isEmpty()) last = null;
@@ -57,17 +69,25 @@ public class Deque<Item> implements Iterable<Item> {
    
 // remove and return the item from the end
 public Item removeLast(){
+    if (isEmpty()) throw new NoSuchElementException();
     Item lastItem = last.item;
     Node previous = null;
     Node current = first;
        
     while (current.next != null) {
-        if (current != first) previous = current;
+        previous = current;
         current = current.next;
     }
-       previous.next = null;
-       last = previous;
-       return lastItem;
+    
+    //edge case: if there is only one node in the list
+    if (previous == null){
+        first = null;
+        last = null;
+    }else{
+        previous.next = null;
+        last = previous;
+    }    
+    return lastItem;
    }
    
 // return an iterator over items in order from front to end
@@ -110,9 +130,11 @@ public Item removeLast(){
 //       jo.addLast("A");
 //       jo.addLast("B");
 //       jo.addLast("C");
-       jo.removeLast();
-       System.out.println("first "+ jo.first.item);
-       System.out.println("last "+ jo.last.item);
-       System.out.println("---------");
+       System.out.println("remove last "+jo.removeLast());
+       
+       System.out.println("first "+ jo.first);
+       System.out.println("last "+ jo.last);
+       System.out.println("---------"+jo.size());
+       
    }
 }
