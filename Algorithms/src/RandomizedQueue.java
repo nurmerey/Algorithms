@@ -23,7 +23,6 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
    
 // add the item
 public void enqueue(Item item){
-    System.out.println("enqueue "+item);
        if (item == null) throw new NullPointerException();
        if(currentIndex == queue.length) resize(2*queue.length);
        queue[currentIndex++] = item;
@@ -45,9 +44,6 @@ public void enqueue(Item item){
        }
        queue = newCopy;
        currentIndex--;
-       System.out.println("current index "+ currentIndex);
-       System.out.println("queue.length "+queue.length);
-//       if (currentIndex > 0 && currentIndex == queue.length/4) resize(queue.length/2);
     return randomItem;
    }
    
@@ -55,9 +51,7 @@ public void enqueue(Item item){
    public Item sample(){
        if (isEmpty()) throw new NoSuchElementException();
        int randomInt = StdRandom.uniform(1, currentIndex);
-       System.out.println("random int "+randomInt);
        Item randomItem = (Item)queue[randomInt];
-       System.out.println(randomItem);
     return randomItem;
    }
    
@@ -95,7 +89,6 @@ public void enqueue(Item item){
    
    
 private void resize(int capacity) {
-    System.out.println("resize to "+capacity);
     Item[] copy = (Item[])new Object[capacity];
     for (int i = 0; i < currentIndex; i++)
         copy[i] = queue[i];
