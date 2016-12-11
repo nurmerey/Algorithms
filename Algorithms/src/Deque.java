@@ -28,8 +28,7 @@ public class Deque<Item> implements Iterable<Item> {
            size = 0;
        } else {
            Node current = first;
-           while (current.next != null) {
-               System.out.println("iterating "+current.item);           
+           while (current.next != null) {           
                current = current.next;
                size++;
            }
