@@ -64,12 +64,19 @@ public void enqueue(Item item){
 // return an independent iterator over items in random order
    public Iterator<Item> iterator(){
     return new RandomIterator();
-       
    }
    
    private class RandomIterator implements Iterator<Item>{
    
     private int i = 0;
+    private Item[] copyOfQueue; // copy items in the queue
+    public RandomIterator() {
+        copyOfQueue = (Item[])new Object[currentIndex];
+        for (int i = 0; i < currentIndex; i++)
+            copyOfQueue[i] = queue[i];
+        StdRandom.shuffle(copyOfQueue);
+    }
+    
     @Override
     public boolean hasNext() {
         return i < currentIndex;
@@ -77,7 +84,7 @@ public void enqueue(Item item){
 
     @Override
     public Item next() {
-        return queue[i++];
+        return copyOfQueue[i++];
     }
     
     @Override
@@ -111,14 +118,14 @@ private void resize(int capacity) {
            System.out.println(s);
        }
        
-       System.out.println("dequeue "+randQ.dequeue());
-       System.out.println("dequeue "+randQ.dequeue());
-       System.out.println("dequeue "+randQ.dequeue());
-       System.out.println("dequeue "+randQ.dequeue());
-       System.out.println("dequeue "+randQ.dequeue());
-       System.out.println("dequeue "+randQ.dequeue());
-       System.out.println("dequeue "+randQ.dequeue());
-       System.out.println("dequeue "+randQ.dequeue());
+//       System.out.println("dequeue "+randQ.dequeue());
+//       System.out.println("dequeue "+randQ.dequeue());
+//       System.out.println("dequeue "+randQ.dequeue());
+//       System.out.println("dequeue "+randQ.dequeue());
+//       System.out.println("dequeue "+randQ.dequeue());
+//       System.out.println("dequeue "+randQ.dequeue());
+//       System.out.println("dequeue "+randQ.dequeue());
+//       System.out.println("dequeue "+randQ.dequeue());
        
        for (String s: randQ){
            System.out.println("------");
@@ -130,7 +137,7 @@ private void resize(int capacity) {
        
        //1.dequque - done
        //2 resize - done
-       //3.randomizer 
+       //3.randomizer - done
        //4.subset
    }
 }
