@@ -130,7 +130,7 @@ public Item removeLast(){
 //       jo.addLast("A");
 //       jo.addLast("B");
 //       jo.addLast("C");
-       System.out.println("remove last "+jo.removeLast());
+//       System.out.println("remove last "+jo.removeLast());
        
        System.out.println("first "+ jo.first);
        System.out.println("last "+ jo.last);
