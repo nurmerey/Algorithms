@@ -33,16 +33,17 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
        if (isEmpty()) throw new NoSuchElementException();
        int randomInt = StdRandom.uniform(currentIndex);
        Item randomItem = queue[randomInt];
-       Item[] newCopy = (Item[]) new Object[this.size()];
+       Item[] newCopy = (Item[]) new Object[queue.length];
        int i = 0;
        for (Item s: this) {
            if (!s.equals(randomItem)) {
                newCopy[i] = s;
-               i++;
            }
+           i++;
        }
        queue = newCopy;
        currentIndex--;
+       if (currentIndex > 0 && currentIndex == queue.length/4) resize(queue.length/2);
     return randomItem;
    }
    
@@ -98,8 +99,25 @@ private void resize(int capacity) {
    public static void main(String[] args) {
        System.out.println("RandomizedQueue--------");
        RandomizedQueue<Integer> rq = new RandomizedQueue<Integer>();
+       rq.enqueue(1);
+       rq.enqueue(2);
+       rq.enqueue(3);
        rq.enqueue(4);
-       rq.sample();
+       rq.enqueue(5);
+       rq.enqueue(6);
+       rq.enqueue(7);
+       rq.enqueue(8);
+       rq.enqueue(9);
+       
+       System.out.println(rq.dequeue());
+       System.out.println(rq.dequeue());
+       System.out.println(rq.dequeue());
+       System.out.println(rq.dequeue());
+       System.out.println(rq.dequeue());
+       System.out.println(rq.dequeue());
+       System.out.println(rq.dequeue());
+       System.out.println(rq.dequeue());
+       System.out.println(rq.dequeue());
    }
 }
 
