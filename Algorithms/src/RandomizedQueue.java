@@ -49,7 +49,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 // return (but do not remove) a random item
    public Item sample() {
        if (isEmpty()) throw new NoSuchElementException();
-       int randomInt = StdRandom.uniform(1, currentIndex);
+       int randomInt = StdRandom.uniform(currentIndex);
        Item randomItem = queue[randomInt];
     return randomItem;
    }
@@ -97,41 +97,9 @@ private void resize(int capacity) {
 // unit testing
    public static void main(String[] args) {
        System.out.println("RandomizedQueue--------");
-       RandomizedQueue<String> randQ = new RandomizedQueue<String>();
-       randQ.enqueue("AA");
-       randQ.enqueue("BB");
-       randQ.enqueue("CC");
-       randQ.enqueue("DD");
-       randQ.enqueue("EE");
-       randQ.enqueue("FF");
-       randQ.enqueue("GG");
-       randQ.enqueue("HH");
-       for (String s: randQ) {
-           System.out.println("------");
-           System.out.println(s);
-       }
-       
-//       System.out.println("dequeue "+randQ.dequeue());
-//       System.out.println("dequeue "+randQ.dequeue());
-//       System.out.println("dequeue "+randQ.dequeue());
-//       System.out.println("dequeue "+randQ.dequeue());
-//       System.out.println("dequeue "+randQ.dequeue());
-//       System.out.println("dequeue "+randQ.dequeue());
-//       System.out.println("dequeue "+randQ.dequeue());
-//       System.out.println("dequeue "+randQ.dequeue());
-       
-       for (String s: randQ) {
-           System.out.println("------");
-           System.out.println(s);
-       }
-//       System.out.println("sample "+randQ.sample());
-       System.out.println(randQ.isEmpty());
-       System.out.println(randQ.size());
-       
-       // 1.dequque - done
-       // 2 resize - done
-       // 3.randomizer - done
-       // 4.subset
+       RandomizedQueue<Integer> rq = new RandomizedQueue<Integer>();
+       rq.enqueue(4);
+       rq.sample();
    }
 }
 
