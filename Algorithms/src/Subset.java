@@ -1,7 +1,7 @@
 import edu.princeton.cs.algs4.StdIn;
 
 public class Subset {
-   public static void main(String[] args){
+   public static void main(String[] args) {
        int k = Integer.parseInt(args[0]);
        RandomizedQueue<String> randQ = new RandomizedQueue<String>();
        while (StdIn.hasNextLine()) {

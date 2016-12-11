@@ -8,25 +8,25 @@ public class Deque<Item> implements Iterable<Item> {
    
    private class Node
    {
-    Item item;
-    Node next;
+    private Item item;
+    private Node next;
    }
    
-   public Deque(){
+   public Deque() {
     
    }
    
 // is the deque empty?
-   public boolean isEmpty(){
+   public boolean isEmpty() {
        return first == null;
    }
    
 // return the number of items on the deque
-   public int size(){
+   public int size() {
        int size = 1;
        if (isEmpty()) {
            size = 0;
-       }else{
+       } else {
            Node current = first;
            while (current.next != null) {
                System.out.println("iterating "+current.item);           
@@ -38,7 +38,7 @@ public class Deque<Item> implements Iterable<Item> {
    }
    
 // add the item to the front
-   public void addFirst(Item item){
+   public void addFirst(Item item) {
        if (item == null) throw new NullPointerException();
        Node oldfirst = first;
        first = new Node();
@@ -48,7 +48,7 @@ public class Deque<Item> implements Iterable<Item> {
    }
    
 // add the item to the end
-   public void addLast(Item item){
+   public void addLast(Item item) {
        if (item == null) throw new NullPointerException();
        Node oldlast = last;
        last = new Node();
@@ -59,7 +59,7 @@ public class Deque<Item> implements Iterable<Item> {
    }
    
 // remove and return the item from the front
-   public Item removeFirst(){
+   public Item removeFirst() {
        if (isEmpty()) throw new NoSuchElementException();
        Item item = first.item;
        first = first.next;
@@ -68,7 +68,7 @@ public class Deque<Item> implements Iterable<Item> {
    }
    
 // remove and return the item from the end
-public Item removeLast(){
+public Item removeLast() {
     if (isEmpty()) throw new NoSuchElementException();
     Item lastItem = last.item;
     Node previous = null;
@@ -79,11 +79,11 @@ public Item removeLast(){
         current = current.next;
     }
     
-    //edge case: if there is only one node in the list
-    if (previous == null){
+    // edge case: if there is only one node in the list
+    if (previous == null) {
         first = null;
         last = null;
-    }else{
+    } else {
         previous.next = null;
         last = previous;
     }    
@@ -91,11 +91,11 @@ public Item removeLast(){
    }
    
 // return an iterator over items in order from front to end
-   public Iterator<Item> iterator(){
+   public Iterator<Item> iterator() {
        return new ListIterator();
    }
    
-   private class ListIterator implements Iterator<Item>{
+   private class ListIterator implements Iterator<Item> {
 
     private Node current = first;
     @Override
@@ -118,7 +118,7 @@ public Item removeLast(){
        
    }
 // unit testing
-   public static void main(String[] args){
+   public static void main(String[] args) {
        System.out.println("STARTING");
        Deque<String> jo = new Deque<String>();
        jo.addFirst("1");
