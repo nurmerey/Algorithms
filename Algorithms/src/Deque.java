@@ -104,7 +104,7 @@ public Item removeLast() {
 
     @Override
     public Item next() {
-        if (current.next == null) throw new NoSuchElementException();
+        if (current == null) throw new NoSuchElementException();
         Item item = current.item;
         current = current.next;
         return item;   
