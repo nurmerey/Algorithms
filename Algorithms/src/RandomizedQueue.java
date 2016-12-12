@@ -25,7 +25,8 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
    public void enqueue(Item item) {
        if (item == null) throw new NullPointerException();
        if (currentIndex == queue.length) resize(2*queue.length);
-       queue[currentIndex++] = item;
+       queue[currentIndex] = item;
+       currentIndex += 1;
    }
    
    // remove and return a random item
@@ -36,15 +37,15 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
        Item[] newCopy = (Item[]) new Object[queue.length];
        int i = 0;
        for (Item s: this) {
-           if (!s.equals(randomItem)) {
+           if (s != randomItem) {
                newCopy[i] = s;
+               i++;
            }
-           i++;
        }
        queue = newCopy;
        currentIndex--;
-       if (currentIndex > 0 && currentIndex == queue.length/4) resize(queue.length/2);
-    return randomItem;
+//       if (currentIndex > 0 && currentIndex == queue.length/4) resize(queue.length/2);
+       return randomItem;
    }
    
 // return (but do not remove) a random item
@@ -98,25 +99,11 @@ private void resize(int capacity) {
 // unit testing
    public static void main(String[] args) {
        System.out.println("RandomizedQueue--------");
-       RandomizedQueue<Integer> rq = new RandomizedQueue<Integer>();
-       rq.enqueue(1);
-       rq.enqueue(2);
-       rq.enqueue(3);
-       rq.enqueue(4);
-       rq.enqueue(5);
-       rq.enqueue(6);
-       rq.enqueue(7);
-       rq.enqueue(8);
-       rq.enqueue(9);
+       RandomizedQueue<String> rq = new RandomizedQueue<String>();
+       rq.enqueue("A");
+       rq.enqueue("B");
        
-       System.out.println(rq.dequeue());
-       System.out.println(rq.dequeue());
-       System.out.println(rq.dequeue());
-       System.out.println(rq.dequeue());
-       System.out.println(rq.dequeue());
-       System.out.println(rq.dequeue());
-       System.out.println(rq.dequeue());
-       System.out.println(rq.dequeue());
+       System.out.println("dq----> "+rq.dequeue());
        System.out.println(rq.dequeue());
    }
 }
