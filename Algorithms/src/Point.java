@@ -61,20 +61,24 @@ public class Point implements Comparable<Point> {
      */
     public double slopeTo(Point that) {
         double slope = 0.0;
-        Boolean validSlope = true;
+        boolean validSlope = true;
         
         if (that.x == this.x) { // vertical
             slope = Double.POSITIVE_INFINITY; 
             validSlope = false;
         }
         
-        if (that.x == this.x && that.y == this.y) { //degenerate
+        if (that.x == this.x && that.y == this.y) { // degenerate
             slope = Double.NEGATIVE_INFINITY; 
             validSlope = false;
         }
         
         if (validSlope) {
-            slope = (double) (that.y - this.y) / (double)(that.x - this.x);
+            slope = (double) (that.y - this.y) / (double) (that.x - this.x);
+        }
+        
+        if (slope == -0.0) {
+            slope = 0.0;
         }
         return slope;
     }
@@ -93,7 +97,7 @@ public class Point implements Comparable<Point> {
      */
     public int compareTo(Point that) {
         if (that.x == this.x && that.y == this.y) return 0;
-        if (this.y <that.y || (this.y == that.y && this.x < this.x)) return -1;
+        if (this.y < that.y || (this.y == that.y && this.x < that.x)) return -1;
         else return 1;
     }
 
@@ -129,10 +133,9 @@ public class Point implements Comparable<Point> {
      * Unit tests the Point data type.
      */
     public static void main(String[] args) {
-        /* YOUR CODE HERE */
         Point p = new Point(8, 4);
         Point p2 = new Point(8, 4);
-        
+        p.drawTo(p2);
 
         StdOut.println("point p "+p.toString());
         StdOut.println("point p2 "+p2.toString());
